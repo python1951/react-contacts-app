@@ -7,8 +7,11 @@ export default class Contact extends Component {
   onShowClick = () => {
     this.setState({ showContactInfo: !this.state.showContactInfo });
   };
-  onDeleteClick = (id, dispatch) => {
-    dispatch({ type: "DELETE_CONTACT", payload: id });
+  onDeleteClick = ( dispatch,id) => {
+    dispatch({
+      type: "DELETE_CONTACT",
+      payload: id,
+    });
   };
 
   render() {
@@ -27,7 +30,7 @@ export default class Contact extends Component {
                   onClick={this.onShowClick}
                   class='far fa-angle-down'></i>
                 <i
-                  onClick={this.onDeleteClick(this, id, dispatch)}
+                  onClick={this.onDeleteClick.bind(this, dispatch,id)}
                   className='fas fa-times'
                   style={{
                     float: "right",

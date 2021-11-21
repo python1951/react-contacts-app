@@ -11,12 +11,19 @@ const reducer = (state, action) => {
           (contact) => contact.id !== action.payload,
         ),
       };
+
+    case "ADD_CONTACT":
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts],
+      };
+
     default:
       return state;
   }
 };
 
-export class Provider extends Component {
+export default class Provider extends Component {
   state = {
     contacts: [
       {
@@ -32,7 +39,8 @@ export class Provider extends Component {
         phone: "888-555-222",
       },
     ],
-    dispatch:action=>this.setState(state=>reducer(state,action))};
+    dispatch: (action) => this.setState((state) => reducer(state, action)),
+  };
   render() {
     return (
       <Context.Provider value={this.state}>

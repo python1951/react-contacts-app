@@ -7,7 +7,7 @@ export default class Contacts extends Component {
     return (
       <Consumer>
         {(value) => {
-          const { contacts } = this.value;
+          const { contacts } = value;
           return (
             <React.Fragment>
               {contacts.map((contact) => (
